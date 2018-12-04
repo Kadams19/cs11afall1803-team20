@@ -105,7 +105,7 @@ public class practice1 {
             sb.append("Return Date: ").append(r.get(i)).append("\n");
             sb.append("Book List: ").append(outer.get(i)).append("\n\n");
         }
-        System.out.print(sb.toString());
+        System.out.print(sb);
 
     }
 }
