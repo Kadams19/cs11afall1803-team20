@@ -14,7 +14,7 @@ the system uses 30 day book return period
  */
 
 
-public class pp {
+public class practice1 {
     public static void main(String[] args) throws FileNotFoundException, IOException {
         Scanner console = new Scanner(System.in);
         PrintStream output = new PrintStream(outputFile(console));
@@ -22,7 +22,7 @@ public class pp {
         ArrayList<Integer> id = new ArrayList<>();
         ArrayList<ArrayList<String>> outer = new ArrayList<ArrayList<String>>();
         ArrayList<String> inner = new ArrayList<>();
-        Scanner f = new Scanner(new File("aaa.txt"));
+        Scanner f = new Scanner(new File("database.txt"));
 
         ArrayList<String> n = new ArrayList<>();
         ArrayList<String> r = new ArrayList<>();
