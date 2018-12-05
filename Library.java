@@ -1,18 +1,22 @@
+
+
+/*
+LibraryX Version 1.0.
+Lei, Kareem, Elieen, Muyang
+Presented by Twenty
+
+This system will ask users for their student ID. If the system has student's information,
+it will ask for the new checkout book.
+and renew the database. If not, new student's info will be stored, and then System will ask for book cheked out.
+System automatically generates the checkout and return date,
+the system uses 30 day book return period.
+
+ */
+
 import java.util.*;
 import java.io.*;
 import java.time.format.DateTimeFormatter;
 import java.time.LocalDateTime;
-
-
-/*
-ask user for student ID
-check if Id exists in the libarary system
-if yes, add current borrowing book to the the Id account
-if not, create a new id account for the student, with name and book
-system automatically generates the checkout and return date
-the system uses 30 day book return period
- */
-
 
 public class Library {
 
