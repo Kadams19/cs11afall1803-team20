@@ -1,3 +1,18 @@
+
+
+/*
+LibraryX Version 1.0.
+Lei, Kareem, Elieen, Muyang
+Presented by Twenty
+
+This system will ask users for their student ID. If the system has student's information,
+it will ask for the new checkout book.
+and renew the database. If not, new student's info will be stored, and then System will ask for book cheked out.
+System automatically generates the checkout and return date,
+the system uses 30 day book return period.
+
+ */
+
 import java.util.*;
 import java.io.*;
 import java.time.format.DateTimeFormatter;
@@ -5,71 +20,59 @@ import java.time.LocalDateTime;
 import org.json.simple.JSONObject;
 import org.json.simple.JSONArray;
 
+public class Library {
 
-/*
-ask user for student ID
-check if Id exists in the library system
-if yes, add current borrowing book to the the Id account
-if not, create a new id account for the student, with name and book
-system automatically generates the checkout and return date
-the system uses 30 day book return period
- */
+    private static PrintStream outputFileStream;
 
-
-public class practice1 {
-    public static void main(String[] args) throws FileNotFoundException, IOException {
+    public static void main(String[] args) throws Exception {
         Scanner console = new Scanner(System.in);
-        PrintStream output = new PrintStream(outputFile(console));
+        outputFileStream = new PrintStream(outputFile(console));
         ArrayList<String> name = new ArrayList<>();
         ArrayList<Integer> id = new ArrayList<>();
-        ArrayList<ArrayList<String>> outer = new ArrayList<ArrayList<String>>();
-        ArrayList<String> inner = new ArrayList<>();
-        Scanner f = new Scanner(new File("datsbase.txt"));
+        ArrayList<ArrayList<String>> outer = new ArrayList<>();
+        Scanner f = new Scanner(new File("database.txt"));
+
 
         ArrayList<String> n = new ArrayList<>();
         ArrayList<String> r = new ArrayList<>();
         String a = "y";
-        String line = "";
-        int j = 0;
-        int z = 0;
-        int ct = 0;
+        int j;
 
         ArrayList<String> all = new ArrayList<>();
         while (f.hasNextLine()) {
             all.add(f.nextLine());
         }
-        System.out.println(all);
-        System.out.println(all.get(5));
 
         while (a.contains("y")) {
             System.out.print("Student ID: ");
             int t = console.nextInt();
+            console.nextLine();
             if (id.contains(t)) {
                 j = id.indexOf(t);
                 System.out.print("Book: ");
-                String value = console.next();
-                boolean ftt = bookExist(f, value, all);
-                if (ftt) {
-                    outer.get(j).add(value);
-                } else {
-                    System.out.println("Book Not Found");
-                    System.exit(0);
+                String value = console.nextLine();
+                boolean ftt = bookExist(value, all);
+
+                while (!ftt) {
+                    value = bookNotFound(console);
+                    ftt = bookExist(value, all);
                 }
+                outer.get(j).add(value);
             } else {
                 id.add(t);
-                System.out.print("Student name: ");
-                name.add(console.next());
+                System.out.print("Student Name: ");
+                name.add(console.nextLine());
                 System.out.print("Checkout Book: ");
-                String vv = console.next();
-                boolean tff = bookExist(f, vv, all);
-                if (tff) {
-                    ArrayList<String> nw = new ArrayList<>();
-                    nw.add(vv);
-                    outer.add(nw);
-                } else {
-                    System.out.println("Book Not Found");
-                    System.exit(0);
+                String vv = console.nextLine();
+                boolean tff = bookExist(vv, all);
+
+                while (!tff) {
+                    vv = bookNotFound(console);
+                    tff = bookExist(vv, all);
                 }
+                ArrayList<String> nw = new ArrayList<>();
+                nw.add(vv);
+                outer.add(nw);
             }
 
             DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
@@ -82,27 +85,34 @@ public class practice1 {
             System.out.print("Continue(y/n): ");
             a = console.next();
         }
-        System.setOut(output);
-        outFile(console, name, id, outer, inner, r, n);
+        System.setOut(outputFileStream);
+        outFile(name, id, outer, r, n);
     }
 
     public static File outputFile(Scanner console) {
-        System.out.print("User Data File Name: ");
-        File output = new File(console.next());
+        System.out.print("Output file name: ");
+        File output = new File(console.nextLine());
         return output;
     }
 
-    public static boolean bookExist(Scanner f, String value, ArrayList<String> all) {
+    public static String bookNotFound(Scanner console){
+        System.out.println("****Book Not Found****");
+        System.out.print("Checkout Book: ");
+        String value = console.nextLine();
+        return value;
+    }
+
+    public static boolean bookExist(String value, ArrayList<String> all) {
         boolean tf = false;
         for(String ss : all){
-            if (ss.contains(value))
+            if (ss.equals(value))
                 tf = true;
         }
         return tf;
     }
 
-    public static void outFile(Scanner console, ArrayList<String> name, ArrayList<Integer> id,
-                               ArrayList<ArrayList<String>> outer, ArrayList<String> inner,
+    public static void outFile(ArrayList<String> name, ArrayList<Integer> id,
+                               ArrayList<ArrayList<String>> outer,
                                ArrayList<String> r, ArrayList<String> n ) {
 
 
@@ -119,12 +129,6 @@ public class practice1 {
             // append transaction to list
 
         }
-
-        // Write data JSON Object to data.json file
-
-        System.out.print(sb);
-
-
-
+        outputFileStream.print(sb);
     }
 }
