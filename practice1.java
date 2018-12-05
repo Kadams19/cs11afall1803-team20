@@ -87,7 +87,7 @@ public class Library {
             System.out.print("Continue(y/n): ");
             a = console.next();
         }
-
+        System.setOut(outputFileStream);
         outFile(name, id, outer, r, n);
     }
 
