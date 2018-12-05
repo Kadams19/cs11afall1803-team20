@@ -54,7 +54,7 @@ public class Library {
                 outer.get(j).add(value);
             } else {
                 id.add(t);
-                System.out.print("Student name: ");
+                System.out.print("Student Name: ");
                 name.add(console.nextLine());
                 System.out.print("Checkout Book: ");
                 String vv = console.nextLine();
