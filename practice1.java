@@ -48,8 +48,7 @@ public class pp {
                 boolean ftt = bookExist(f, value, all);
                 if (ftt) {
                     outer.get(j).add(value);
-                }
-                if (ftt == false) {
+                } else {
                     System.out.println("Book Not Found");
                     System.exit(0);
                 }
@@ -64,8 +63,7 @@ public class pp {
                     ArrayList<String> nw = new ArrayList<>();
                     nw.add(vv);
                     outer.add(nw);
-                }
-                if (tff == false) {
+                } else {
                     System.out.println("Book Not Found");
                     System.exit(0);
                 }
