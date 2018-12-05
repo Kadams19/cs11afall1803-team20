@@ -24,7 +24,7 @@ public class Library {
         ArrayList<String> name = new ArrayList<>();
         ArrayList<Integer> id = new ArrayList<>();
         ArrayList<ArrayList<String>> outer = new ArrayList<>();
-        Scanner f = new Scanner(new File("databse.txt"));
+        Scanner f = new Scanner(new File("database.txt"));
 
 
         ArrayList<String> n = new ArrayList<>();
@@ -36,7 +36,6 @@ public class Library {
         while (f.hasNextLine()) {
             all.add(f.nextLine());
         }
-        System.out.println(all);
 
         while (a.contains("y")) {
             System.out.print("Student ID: ");
@@ -46,13 +45,10 @@ public class Library {
                 j = id.indexOf(t);
                 System.out.print("Book: ");
                 String value = console.nextLine();
-                System.out.println("\n\n$$$ " + value + " $$$\n\n");
                 boolean ftt = bookExist(value, all);
 
                 while (!ftt) {
-                    System.out.println("****Book Not Found****");
-                    System.out.print("Checkout Book: ");
-                    value = console.nextLine();
+                    value = bookNotFound(console);
                     ftt = bookExist(value, all);
                 }
                 outer.get(j).add(value);
@@ -65,16 +61,13 @@ public class Library {
                 boolean tff = bookExist(vv, all);
 
                 while (!tff) {
-                    System.out.println("****Book Not Found****");
-                    System.out.print("Checkout Book: ");
-                    vv = console.nextLine();
+                    vv = bookNotFound(console);
                     tff = bookExist(vv, all);
                 }
                 ArrayList<String> nw = new ArrayList<>();
                 nw.add(vv);
                 outer.add(nw);
             }
-
 
             DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
             LocalDateTime now = LocalDateTime.now();
@@ -94,6 +87,13 @@ public class Library {
         System.out.print("Output file name: ");
         File output = new File(console.nextLine());
         return output;
+    }
+
+    public static String bookNotFound(Scanner console){
+        System.out.println("****Book Not Found****");
+        System.out.print("Checkout Book: ");
+        String value = console.nextLine();
+        return value;
     }
 
     public static boolean bookExist(String value, ArrayList<String> all) {
