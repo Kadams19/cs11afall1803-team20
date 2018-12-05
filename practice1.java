@@ -6,7 +6,7 @@ import java.time.LocalDateTime;
 
 /*
 ask user for student ID
-check if Id exists in the libarary system
+check if Id exists in the library system
 if yes, add current borrowing book to the the Id account
 if not, create a new id account for the student, with name and book
 system automatically generates the checkout and return date
@@ -14,7 +14,7 @@ the system uses 30 day book return period
  */
 
 
-public class pp {
+public class practice1 {
     public static void main(String[] args) throws FileNotFoundException, IOException {
         Scanner console = new Scanner(System.in);
         PrintStream output = new PrintStream(outputFile(console));
@@ -30,6 +30,7 @@ public class pp {
         String line = "";
         int j = 0;
         int z = 0;
+        int ct = 0;
 
         ArrayList<String> all = new ArrayList<>();
         while (f.hasNextLine()) {
@@ -48,8 +49,7 @@ public class pp {
                 boolean ftt = bookExist(f, value, all);
                 if (ftt) {
                     outer.get(j).add(value);
-                }
-                if (ftt == false) {
+                } else {
                     System.out.println("Book Not Found");
                     System.exit(0);
                 }
@@ -64,8 +64,7 @@ public class pp {
                     ArrayList<String> nw = new ArrayList<>();
                     nw.add(vv);
                     outer.add(nw);
-                }
-                if (tff == false) {
+                } else {
                     System.out.println("Book Not Found");
                     System.exit(0);
                 }
@@ -116,4 +115,3 @@ public class pp {
 
     }
 }
-
