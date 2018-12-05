@@ -89,7 +89,7 @@ public class pp {
     String forret = ret.format(dtf);
     n.add(fornow);
     r.add(forret);
-    System.out.print("Continue(y/n): "); //continue borrow books or not
+    System.out.print("Continue (y/n): "); //continue borrow books or not
     a = console.next();                  // create a loop
   }
 }
@@ -100,7 +100,7 @@ if (ct > 0) {
   outer.add(nw);
 }
 if (ct == 0) {
-  System.out.println("Book Not Found");
+  System.out.println("Sorry, that book was not found");
   System.exit(0);
 }
 System.setOut(output);
