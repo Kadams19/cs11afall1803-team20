@@ -22,7 +22,7 @@ public class practice1 {
         ArrayList<Integer> id = new ArrayList<>();
         ArrayList<ArrayList<String>> outer = new ArrayList<ArrayList<String>>();
         ArrayList<String> inner = new ArrayList<>();
-        Scanner f = new Scanner(new File("database.txt"));
+        Scanner f = new Scanner(new File("datsbase.txt"));
 
         ArrayList<String> n = new ArrayList<>();
         ArrayList<String> r = new ArrayList<>();
