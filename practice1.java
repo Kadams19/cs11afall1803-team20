@@ -85,7 +85,7 @@ public class practice1 {
     }
 
     public static File outputFile(Scanner console) {
-        System.out.print("Output file name: ");
+        System.out.print("User Data File Name: ");
         File output = new File(console.next());
         return output;
     }
