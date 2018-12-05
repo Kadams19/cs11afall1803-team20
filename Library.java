@@ -24,7 +24,6 @@ public class Library {
         ArrayList<String> name = new ArrayList<>();
         ArrayList<Integer> id = new ArrayList<>();
         ArrayList<ArrayList<String>> outer = new ArrayList<>();
-        ArrayList<String> inner = new ArrayList<>();
         Scanner f = new Scanner(new File("/Users/Eileen/IdeaProjects/Practice/WorkingFiles/aaa.txt"));
 
 
