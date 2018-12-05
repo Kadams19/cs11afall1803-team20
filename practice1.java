@@ -48,30 +48,34 @@ public class Library {
                 System.out.print("Book: ");
                 String value = console.nextLine();
                 System.out.println("\n\n$$$ " + value + " $$$\n\n");
-                boolean ftt = bookExist(f, value, all);
-                if (ftt) {
-                    outer.get(j).add(value);
-                } else {
-                    System.out.println("Book Not Found");
-                    System.exit(0);
+                boolean ftt = bookExist(value, all);
+
+                while (!ftt) {
+                    System.out.println("****Book Not Found****");
+                    System.out.print("Checkout Book: ");
+                    value = console.nextLine();
+                    ftt = bookExist(value, all);
                 }
+                outer.get(j).add(value);
             } else {
                 id.add(t);
                 System.out.print("Student name: ");
                 name.add(console.nextLine());
                 System.out.print("Checkout Book: ");
                 String vv = console.nextLine();
-                System.out.println("\n\n### " + vv + " ###\n\n");
-                boolean tff = bookExist(f, vv, all);
-                if (tff) {
-                    ArrayList<String> nw = new ArrayList<>();
-                    nw.add(vv);
-                    outer.add(nw);
-                } else {
-                    System.out.println("Book Not Found");
-                    System.exit(0);
+                boolean tff = bookExist(vv, all);
+
+                while (!tff) {
+                    System.out.println("****Book Not Found****");
+                    System.out.print("Checkout Book: ");
+                    vv = console.nextLine();
+                    tff = bookExist(vv, all);
                 }
+                ArrayList<String> nw = new ArrayList<>();
+                nw.add(vv);
+                outer.add(nw);
             }
+
 
             DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
             LocalDateTime now = LocalDateTime.now();
@@ -93,7 +97,7 @@ public class Library {
         return output;
     }
 
-    public static boolean bookExist(Scanner f, String value, ArrayList<String> all) {
+    public static boolean bookExist(String value, ArrayList<String> all) {
         boolean tf = false;
         for(String ss : all){
             if (ss.equals(value))
