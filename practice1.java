@@ -2,6 +2,8 @@ import java.util.*;
 import java.io.*;
 import java.time.format.DateTimeFormatter;
 import java.time.LocalDateTime;
+import org.json.simple.JSONObject;
+import org.json.simple.JSONArray;
 
 
 /*
@@ -102,16 +104,27 @@ public class practice1 {
     public static void outFile(Scanner console, ArrayList<String> name, ArrayList<Integer> id,
                                ArrayList<ArrayList<String>> outer, ArrayList<String> inner,
                                ArrayList<String> r, ArrayList<String> n ) {
-        StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < id.size(); i++) {
+
+
+      //JSON HERE
+
+
             sb.append("Student Name: ").append(name.get(i)).append("\n");
             sb.append("Student ID: ").append(id.get(i)).append("\n");
             sb.append("Checkout Book: ").append(outer.get(i).get(0)).append("\n");
             sb.append("Checkout Date: ").append(n.get(i)).append("\n");
             sb.append("Return Date: ").append(r.get(i)).append("\n");
             sb.append("Book List: ").append(outer.get(i)).append("\n\n");
+
+            // append transaction to list
+
         }
+
+        // Write data JSON Object to data.json file
+
         System.out.print(sb);
+
+
 
     }
 }
